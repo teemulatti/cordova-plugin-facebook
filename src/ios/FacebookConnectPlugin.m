@@ -336,7 +336,7 @@
             objectType = [objectType stringByReplacingOccurrencesOfString:@"."
                                                                withString:@":"];
 
-            [action setObject:object forKey:objectType];
+            [action setObject:object forKey:@"object"];
             FBSDKShareOpenGraphContent *content = [[FBSDKShareOpenGraphContent alloc] init];
             content.action = action;
             content.previewPropertyName = objectType;
