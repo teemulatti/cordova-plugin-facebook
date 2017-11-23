@@ -332,14 +332,11 @@
                 NSLog(@"No 'og:type' encountered in the object JSON. Please provide an Open Graph object type.");
                 return;
             }
-            NSString *objectType = json[@"og:type"];
-            objectType = [objectType stringByReplacingOccurrencesOfString:@"."
-                                                               withString:@":"];
 
             [action setObject:object forKey:@"object"];
             FBSDKShareOpenGraphContent *content = [[FBSDKShareOpenGraphContent alloc] init];
             content.action = action;
-            content.previewPropertyName = objectType;
+            content.previewPropertyName = @"object";
             [FBSDKShareDialog showFromViewController:self.topMostController
                                          withContent:content
                                             delegate:nil];
