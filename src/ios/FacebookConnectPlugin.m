@@ -337,7 +337,9 @@
             FBSDKShareOpenGraphContent *content = [[FBSDKShareOpenGraphContent alloc] init];
             content.action = action;
             content.previewPropertyName = @"object";
-            [FBSDKShareDialog withContent:content delegate:nil];
+            [FBSDKShareDialog showFromViewController:self.topMostController
+                                         withContent:content
+                                            delegate:nil];
         }
         return;
     }
