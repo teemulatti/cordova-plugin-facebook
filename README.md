@@ -1,6 +1,10 @@
 # cordova-plugin-facebook4
 
-> Use Facebook SDK version 4 in Cordova projects
+This is a fork from jeduan/cordova-plugin-facebook4 with some changes for iOS platform (for EULE use). The following changes have been made compared to forked original:
+
+* Sharing via method "share_open_graph" did not work correctly for anything else than object type "object" because it was using "og:type" as action object property name although Facebook SDK assumes the action object is always stored with property name "object". Fixed by hardcoding property name.
+
+* Not able to login with different account after logging in with one. This is proparly because Facebook SDK stored access token into system and even logout does not clear it (maybe bug on their side). Fixed by hardcoding login behavior as "web", which means native login is never used but now logout works correctly.
 
 ## Installation
 
