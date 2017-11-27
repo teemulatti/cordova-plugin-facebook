@@ -340,10 +340,10 @@
             content.action = action;
             content.previewPropertyName = @"object";
             FBSDKShareDialog *dialog = [[FBSDKShareDialog alloc] init];
+            dialog.fromViewController = [self topMostController];
+            dialog.shareContent = content;
             dialog.mode = FBSDKShareDialogModeBrowser;
-            [dialog showFromViewController:self.topMostController
-                               withContent:content
-                                  delegate:nil];
+            [dialog show];
         }
         return;
     }
