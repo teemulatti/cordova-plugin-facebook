@@ -181,7 +181,7 @@
 
         if (self.loginManager == nil) {
             self.loginManager = [[FBSDKLoginManager alloc] init];
-            self.loginMgr.loginBehavior = FBSDKLoginBehaviorWeb;
+            self.loginManager.loginBehavior = FBSDKLoginBehaviorWeb;
         }
         [self.loginManager logInWithReadPermissions:permissions fromViewController:[self topMostController] handler:loginHandler];
         return;
@@ -234,7 +234,7 @@
         // Close the session and clear the cache
         if (self.loginManager == nil) {
             self.loginManager = [[FBSDKLoginManager alloc] init];
-            self.loginMgr.loginBehavior = FBSDKLoginBehaviorWeb;
+            self.loginManager.loginBehavior = FBSDKLoginBehaviorWeb;
         }
 
         [self.loginManager logOut];
@@ -541,7 +541,7 @@
     BOOL readPermissionFound = NO;
     if (self.loginManager == nil) {
         self.loginManager = [[FBSDKLoginManager alloc] init];
-        self.loginMgr.loginBehavior = FBSDKLoginBehaviorWeb;
+        self.loginManager.loginBehavior = FBSDKLoginBehaviorWeb;
     }
 
     for (NSString *p in permissions) {
