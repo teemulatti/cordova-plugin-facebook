@@ -342,7 +342,7 @@
             FBSDKShareDialog *dialog = [[FBSDKShareDialog alloc] init];
             dialog.fromViewController = [self topMostController];
             dialog.shareContent = content;
-            dialog.mode = FBSDKShareDialogModeBrowser;
+            dialog.mode = FBSDKShareDialogModeWeb;
             [dialog show];
         }
         return;
