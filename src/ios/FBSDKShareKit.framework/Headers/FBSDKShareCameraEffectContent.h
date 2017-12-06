@@ -16,30 +16,37 @@
 // IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN
 // CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 
-#import <UIKit/UIKit.h>
+#import <Foundation/Foundation.h>
 
-#import <FBSDKCoreKit/FBSDKButton.h>
-
-#import <FBSDKShareKit/FBSDKLikeObjectType.h>
-#import <FBSDKShareKit/FBSDKLiking.h>
-
-/**
-  Warning: This class is deprecated.
-  A button to like an object.
-
- Tapping the receiver will invoke an API call to the Facebook app through a fast-app-switch that allows
- the object to be liked.  Upon return to the calling app, the view will update with the new state.  If the
- currentAccessToken has "publish_actions" permission and the object is an Open Graph object, then the like can happen
- seamlessly without the fast-app-switch.
- */
-__attribute__ ((deprecated))
-@interface FBSDKLikeButton : FBSDKButton <FBSDKLiking>
+#import <FBSDKShareKit/FBSDKCameraEffectArguments.h>
+#import <FBSDKShareKit/FBSDKCameraEffectTextures.h>
+#import <FBSDKShareKit/FBSDKSharingContent.h>
 
 /**
-  If YES, a sound is played when the receiver is toggled.
-
- @default YES
+ A model for content to share with a Facebook camera effect.
  */
-@property (nonatomic, assign, getter = isSoundEnabled) BOOL soundEnabled;
+@interface FBSDKShareCameraEffectContent : NSObject <FBSDKSharingContent>
+
+/**
+ ID of the camera effect to use.
+ */
+@property (nonatomic, copy) NSString *effectID;
+
+/**
+ Arguments for the effect.
+ */
+@property (nonatomic, copy) FBSDKCameraEffectArguments *effectArguments;
+
+/**
+ Textures for the effect.
+ */
+@property (nonatomic, copy) FBSDKCameraEffectTextures *effectTextures;
+
+/**
+ Compares the receiver to another camera effect content.
+ - Parameter content: The other content
+ - Returns: YES if the receiver's values are equal to the other content's values; otherwise NO
+ */
+- (BOOL)isEqualToShareCameraEffectContent:(FBSDKShareCameraEffectContent *)content;
 
 @end

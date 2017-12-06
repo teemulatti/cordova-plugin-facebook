@@ -16,30 +16,42 @@
 // IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN
 // CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 
-#import <UIKit/UIKit.h>
+#import <Foundation/Foundation.h>
 
-#import <FBSDKCoreKit/FBSDKButton.h>
-
-#import <FBSDKShareKit/FBSDKLikeObjectType.h>
-#import <FBSDKShareKit/FBSDKLiking.h>
+#import <FBSDKCoreKit/FBSDKCopying.h>
 
 /**
-  Warning: This class is deprecated.
-  A button to like an object.
-
- Tapping the receiver will invoke an API call to the Facebook app through a fast-app-switch that allows
- the object to be liked.  Upon return to the calling app, the view will update with the new state.  If the
- currentAccessToken has "publish_actions" permission and the object is an Open Graph object, then the like can happen
- seamlessly without the fast-app-switch.
+ * A container of arguments for a camera effect.
+ * An argument is a NSString identified by a NSString key.
  */
-__attribute__ ((deprecated))
-@interface FBSDKLikeButton : FBSDKButton <FBSDKLiking>
+@interface FBSDKCameraEffectArguments : NSObject <FBSDKCopying, NSSecureCoding>
 
 /**
-  If YES, a sound is played when the receiver is toggled.
-
- @default YES
+ Sets a string argument in the container.
+ - Parameter string: The argument
+ - Parameter key: The key for the argument
  */
-@property (nonatomic, assign, getter = isSoundEnabled) BOOL soundEnabled;
+- (void)setString:(NSString *)string forKey:(NSString *)key;
+
+/**
+ Gets a string argument from the container.
+ - Parameter key: The key for the argument
+ - Returns: The string value or nil
+ */
+- (NSString *)stringForKey:(NSString *)key;
+
+/**
+ Sets a string array argument in the container.
+ - Parameter array: The array argument
+ - Parameter key: The key for the argument
+ */
+- (void)setArray:(NSArray<NSString *> *)array forKey:(NSString *)key;
+
+/**
+ Gets an array argument from the container.
+ - Parameter key: The key for the argument
+ - Returns: The array argument
+ */
+- (NSArray *)arrayForKey:(NSString *)key;
 
 @end
