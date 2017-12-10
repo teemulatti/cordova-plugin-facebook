@@ -286,9 +286,9 @@
         // Create native params
         FBSDKShareLinkContent *content = [[FBSDKShareLinkContent alloc] init];
         content.contentURL = [NSURL URLWithString:params[@"href"]];
-        content.contentTitle = params[@"caption"];
-        content.imageURL = [NSURL URLWithString:params[@"picture"]];
-        content.contentDescription = params[@"description"];
+        //content.contentTitle = params[@"caption"];
+        //content.imageURL = [NSURL URLWithString:params[@"picture"]];
+        //content.contentDescription = params[@"description"];
         content.hashtag = [FBSDKHashtag hashtagWithString:[params objectForKey:@"hashtag"]];
         content.quote = params[@"quote"];
 
