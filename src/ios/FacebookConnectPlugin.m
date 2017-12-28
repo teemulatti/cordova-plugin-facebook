@@ -834,6 +834,7 @@ void FBMethodSwizzle(Class c, SEL originalSelector) {
 
 + (void)load
 {
+    FBMethodSwizzle([self class], @selector(application:openURL:options:));
     FBMethodSwizzle([self class], @selector(application:openURL:sourceApplication:annotation:));
 }
 
@@ -851,7 +852,7 @@ void FBMethodSwizzle(Class c, SEL originalSelector) {
     NSLog(@"FB handle url: %@", url);
 
     // Call existing method
-    return [self swizzled_application:application openURL:url sourceApplication:[options valueForKey:@"UIApplicationOpenURLOptionsSourceApplicationKey"] annotation:0x0];
+    return [self swizzled_application:application openURL:url options:options];
 }
 
 - (BOOL)noop_application:(UIApplication *)application openURL:(NSURL *)url sourceApplication:(NSString *)sourceApplication annotation:(id)annotation
