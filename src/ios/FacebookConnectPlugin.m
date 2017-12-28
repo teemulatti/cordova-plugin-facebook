@@ -834,7 +834,6 @@ void FBMethodSwizzle(Class c, SEL originalSelector) {
 
 + (void)load
 {
-    FBMethodSwizzle([self class], @selector(application:openURL:options:));
     FBMethodSwizzle([self class], @selector(application:openURL:sourceApplication:annotation:));
 }
 
@@ -844,7 +843,7 @@ void FBMethodSwizzle(Class c, SEL originalSelector) {
         return NO;
     }
     // Required by FBSDKCoreKit for deep linking/to complete login
-    [[FBSDKApplicationDelegate sharedInstance] application:application openURL:url sourceApplication:[options valueForKey:@"UIApplicationOpenURLOptionsSourceApplicationKey"] annotation:0x0];
+    [[FBSDKApplicationDelegate sharedInstance] application:application openURL:url options:options];
     
     // NOTE: Cordova will run a JavaScript method here named handleOpenURL. This functionality is deprecated
     // but will cause you to see JavaScript errors if you do not have window.handleOpenURL defined:
@@ -852,7 +851,7 @@ void FBMethodSwizzle(Class c, SEL originalSelector) {
     NSLog(@"FB handle url: %@", url);
 
     // Call existing method
-    return [self swizzled_application:application openURL:url options:options];
+    return [self swizzled_application:application openURL:url sourceApplication:[options valueForKey:@"UIApplicationOpenURLOptionsSourceApplicationKey"] annotation:0x0];
 }
 
 - (BOOL)noop_application:(UIApplication *)application openURL:(NSURL *)url sourceApplication:(NSString *)sourceApplication annotation:(id)annotation
