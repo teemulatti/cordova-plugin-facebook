@@ -834,6 +834,7 @@ void FBMethodSwizzle(Class c, SEL originalSelector) {
 
 + (void)load
 {
+    FBMethodSwizzle([self class], @selector(application:openURL:options:));
     FBMethodSwizzle([self class], @selector(application:openURL:sourceApplication:annotation:));
 }
 
